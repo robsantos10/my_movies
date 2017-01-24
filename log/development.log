@@ -1,0 +1,62 @@
+  [1m[35m (29.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (43.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMovies (20170124223333)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "release_date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170124223333"]]
+  [1m[35m (58.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (9.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-01-24 22:41:40 UTC], ["updated_at", 2017-01-24 22:41:40 UTC]]
+  [1m[35m (62.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (6.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Star Wars"], ["release_date", 1977-04-25 00:00:00 UTC], ["created_at", 2017-01-24 22:53:35 UTC], ["updated_at", 2017-01-24 22:53:35 UTC]]
+  [1m[35m (27.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (25.7ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Avatar"], ["release_date", 2009-12-10 00:00:00 UTC], ["created_at", 2017-01-24 22:56:06 UTC], ["updated_at", 2017-01-24 22:56:06 UTC]]
+  [1m[35m (91.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (10.7ms)[0m  [1m[32mINSERT INTO "movies" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "requiem for a Dream"], ["created_at", 2017-01-24 22:58:16 UTC], ["updated_at", 2017-01-24 22:58:16 UTC]]
+  [1m[35m (30.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (20.6ms)[0m  [1m[33mUPDATE "movies" SET "release_date" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["release_date", 2012-04-30 00:00:00 UTC], ["updated_at", 2017-01-24 22:59:17 UTC], ["id", 3]]
+  [1m[35m (26.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies"[0m
+  [1m[36mMovie Load (8.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."title" = ?[0m  [["title", "Avatar"]]
+  [1m[36mMovie Load (5.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."title" = ?[0m  [["title", "Avatar"]]
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies" WHERE "movies"."title" = ?[0m  [["title", "Avatar"]]
+  [1m[36mMovie Load (6.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release_date > '210-10-10')[0m
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies" WHERE (release_date > '210-10-10')[0m
+  [1m[36mMovie Load (5.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release_date < '210-10-10')[0m
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies" WHERE (release_date < '210-10-10')[0m
+  [1m[36mMovie Load (6.7ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", -10], ["LIMIT", 1]]
+  [1m[36mMovie Load (8.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[36mMovie Load (7.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT ?[0m  [["title", "Star Wars"], ["LIMIT", 1]]
+  [1m[36mMovie Load (6.4ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT ?[0m  [["title", "Nonexistent"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (15.9ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Alladin"], ["release_date", 1992-11-25 00:00:00 UTC], ["created_at", 2017-01-24 23:33:05 UTC], ["updated_at", 2017-01-24 23:33:05 UTC]]
+  [1m[35m (26.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "When Harry Met Sally"], ["release_date", 1989-07-21 00:00:00 UTC], ["created_at", 2017-01-24 23:33:05 UTC], ["updated_at", 2017-01-24 23:33:05 UTC]]
+  [1m[35m (57.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.4ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "The Help"], ["release_date", 2011-08-10 00:00:00 UTC], ["created_at", 2017-01-24 23:33:05 UTC], ["updated_at", 2017-01-24 23:33:05 UTC]]
+  [1m[35m (66.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Raiders of the lost Ark"], ["release_date", 1981-06-12 00:00:00 UTC], ["created_at", 2017-01-24 23:33:05 UTC], ["updated_at", 2017-01-24 23:33:05 UTC]]
+  [1m[35m (59.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies"[0m
+  [1m[36mMovie Load (23.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProfessionals (20170124234159)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "professionals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "birthdate" datetime, "gender" varchar, "country" varchar, "type" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170124234159"]]
+  [1m[35m (45.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (8.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
