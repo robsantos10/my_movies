@@ -16,3 +16,23 @@ movies = [
 movies.each do |movie|
   Movie.create!(movie)
 end
+
+
+actor = [
+  {name: "Angelina Jolie", gender: "female", birthdate: "4-Jun-1975", country: "US"},
+  {name: "Will Smith", gender: "male", birthdate: "25-Sep-1968", country: "US"},
+  {name: "Margot Robbie", gender: "female", birthdate: "2-Jul-1990", country: "US"},
+]
+
+movies.each do |actor|
+  Actor.create!(actor)
+end
+
+director = [
+  {name: "Quentin tarantino", gender: "male", birthdate: "27-03-1963", country: "US"},
+  {name: "Mel Gibson", gender: "male", birthdate: "3-Jan-1956", country: "US"},
+]
+
+movies.each do |director|
+  Director.create!(director)
+end
