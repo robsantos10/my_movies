@@ -1500,3 +1500,673 @@ Processing by MoviesController#index as HTML
 Completed 200 OK in 55ms (Views: 49.3ms | ActiveRecord: 4.2ms)
 
 
+Started GET "/movies/" for ::1 at 2017-01-27 19:41:35 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (3.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (27.9ms)
+Completed 200 OK in 1021ms (Views: 990.0ms | ActiveRecord: 21.6ms)
+
+
+Started GET "/movies/5" for ::1 at 2017-01-27 19:41:39 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mMovie Load (7.8ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  Rendered movies/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 116ms (Views: 100.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/actors/" for ::1 at 2017-01-27 19:44:29 -0200
+Processing by ActorsController#index as HTML
+  Rendering actors/index.html.erb within layouts/application
+  [1m[36mActor Load (4.3ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor')[0m
+  Rendered actors/index.html.erb within layouts/application (29.5ms)
+Completed 200 OK in 189ms (Views: 106.9ms | ActiveRecord: 29.1ms)
+
+
+Started GET "/actors/1" for ::1 at 2017-01-27 19:44:41 -0200
+Processing by ActorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mActor Load (10.4ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering actors/show.html.erb within layouts/application
+  Rendered actors/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 642ms (Views: 618.6ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/actors" for ::1 at 2017-01-27 19:44:43 -0200
+Processing by ActorsController#index as HTML
+  Rendering actors/index.html.erb within layouts/application
+  [1m[36mActor Load (9.5ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor')[0m
+  Rendered actors/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 467ms (Views: 456.5ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/actors/2/edit" for ::1 at 2017-01-27 19:44:47 -0200
+Processing by ActorsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mActor Load (5.9ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering actors/edit.html.erb within layouts/application
+  Rendered actors/_form.html.erb (64.6ms)
+  Rendered actors/edit.html.erb within layouts/application (76.1ms)
+Completed 200 OK in 197ms (Views: 177.9ms | ActiveRecord: 5.9ms)
+
+
+Started PATCH "/actors/2" for ::1 at 2017-01-27 19:46:07 -0200
+Processing by ActorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zp1nUTB4g6aMSHArjJl5TTi5sDDEjAxO2NmWOc0uNB/shbljSZxDtMH/3+lUdg6onphl/cEj31eiEWgOn2anHA==", "actor"=>{"name"=>"Will Smith", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"21", "birthdate(5i)"=>"44", "gender"=>"male", "country"=>"China", "type"=>"Actor"}, "commit"=>"Update Actor", "id"=>"2"}
+  [1m[36mActor Load (3.0ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (37.2ms)[0m  [1m[33mUPDATE "professionals" SET "country" = ?, "birthdate" = ?, "updated_at" = ? WHERE "professionals"."id" = ?[0m  [["country", "China"], ["birthdate", 2017-01-27 21:44:00 UTC], ["updated_at", 2017-01-27 21:46:07 UTC], ["id", 2]]
+  [1m[35m (47.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/actors/2
+Completed 302 Found in 92ms (ActiveRecord: 87.7ms)
+
+
+Started GET "/actors/2" for ::1 at 2017-01-27 19:46:07 -0200
+Processing by ActorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mActor Load (4.4ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering actors/show.html.erb within layouts/application
+  Rendered actors/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 66ms (Views: 56.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/actors" for ::1 at 2017-01-27 19:46:12 -0200
+Processing by ActorsController#index as HTML
+  Rendering actors/index.html.erb within layouts/application
+  [1m[36mActor Load (4.7ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor')[0m
+  Rendered actors/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 102ms (Views: 95.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/actors/new" for ::1 at 2017-01-27 19:46:21 -0200
+Processing by ActorsController#new as HTML
+  Rendering actors/new.html.erb within layouts/application
+  Rendered actors/_form.html.erb (3.3ms)
+  Rendered actors/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 408ms (Views: 389.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/actors" for ::1 at 2017-01-27 19:47:05 -0200
+Processing by ActorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uTgnB4xduuADSvlJ1cqbSl0jIT5oj2a9fGYLawaumQ/aXKwmQikaBryC2Ln0eUK8MyxHWeIcaGR5AoGJUsVD1w==", "actor"=>{"name"=>"FatVini", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"21", "birthdate(5i)"=>"46", "gender"=>"Feminino", "country"=>"Janira", "type"=>"Actor"}, "commit"=>"Create Actor"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (32.2ms)[0m  [1m[32mINSERT INTO "professionals" ("name", "birthdate", "gender", "country", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "FatVini"], ["birthdate", 2017-01-27 21:46:00 UTC], ["gender", "Feminino"], ["country", "Janira"], ["type", "Actor"], ["created_at", 2017-01-27 21:47:05 UTC], ["updated_at", 2017-01-27 21:47:05 UTC]]
+  [1m[35m (53.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/actors/4
+Completed 302 Found in 89ms (ActiveRecord: 85.7ms)
+
+
+Started GET "/actors/4" for ::1 at 2017-01-27 19:47:05 -0200
+Processing by ActorsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mActor Load (3.8ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering actors/show.html.erb within layouts/application
+  Rendered actors/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 119ms (Views: 112.9ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/actors" for ::1 at 2017-01-27 19:47:10 -0200
+Processing by ActorsController#index as HTML
+  Rendering actors/index.html.erb within layouts/application
+  [1m[36mActor Load (4.5ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor')[0m
+  Rendered actors/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 99ms (Views: 91.3ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 19:48:48 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (4.2ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 132ms (Views: 87.4ms | ActiveRecord: 17.7ms)
+
+
+Started GET "/directors/new" for ::1 at 2017-01-27 19:49:22 -0200
+Processing by DirectorsController#new as HTML
+  Rendering directors/new.html.erb within layouts/application
+  Rendered directors/_form.html.erb (3.4ms)
+  Rendered directors/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 544ms (Views: 528.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/directors" for ::1 at 2017-01-27 19:50:48 -0200
+Processing by DirectorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6AEzxCkYjLeDdO2OUI++W62EkidusXorUNZdbq1DPaGXtd0Berl70hvD1ElKUaRh3W7GzZx4a6MTsWxwGmoqTg==", "director"=>{"name"=>"Eu mesmo", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"21", "birthdate(5i)"=>"49", "gender"=>"Macho", "country"=>"Brasil", "type"=>"Director"}, "commit"=>"Create Director"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (18.0ms)[0m  [1m[32mINSERT INTO "professionals" ("name", "birthdate", "gender", "country", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Eu mesmo"], ["birthdate", 2017-01-27 21:49:00 UTC], ["gender", "Macho"], ["country", "Brasil"], ["type", "Director"], ["created_at", 2017-01-27 21:50:48 UTC], ["updated_at", 2017-01-27 21:50:48 UTC]]
+  [1m[35m (37.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/directors/5
+Completed 302 Found in 59ms (ActiveRecord: 55.1ms)
+
+
+Started GET "/directors/5" for ::1 at 2017-01-27 19:50:48 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDirector Load (3.5ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 81ms (Views: 63.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/directors/5/edit" for ::1 at 2017-01-27 19:50:58 -0200
+Processing by DirectorsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDirector Load (5.8ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering directors/edit.html.erb within layouts/application
+  Rendered directors/_form.html.erb (3.9ms)
+  Rendered directors/edit.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 244ms (Views: 225.6ms | ActiveRecord: 5.8ms)
+
+
+Started PATCH "/directors/5" for ::1 at 2017-01-27 19:51:03 -0200
+Processing by DirectorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"63ifoH/ZyiV7P3z8buFDWFSyoBx+JzVdLaVU0naOcppcfNNxAwbB0j4n0fTkOoiB8mBsWdMQmt17BgoLr8jlEw==", "director"=>{"name"=>"Eu mesmo", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"21", "birthdate(5i)"=>"49", "gender"=>"Muito Macho", "country"=>"Brasil", "type"=>"Director"}, "commit"=>"Update Director", "id"=>"5"}
+  [1m[36mDirector Load (4.9ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (48.5ms)[0m  [1m[33mUPDATE "professionals" SET "gender" = ?, "updated_at" = ? WHERE "professionals"."id" = ?[0m  [["gender", "Muito Macho"], ["updated_at", 2017-01-27 21:51:03 UTC], ["id", 5]]
+  [1m[35m (23.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/directors/5
+Completed 302 Found in 81ms (ActiveRecord: 76.9ms)
+
+
+Started GET "/directors/5" for ::1 at 2017-01-27 19:51:03 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDirector Load (4.2ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 38ms (Views: 31.1ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/directors/5" for ::1 at 2017-01-27 19:54:53 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDirector Load (4.2ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 1703ms (Views: 1641.6ms | ActiveRecord: 23.1ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 19:54:59 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (52.9ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (55.2ms)
+Completed 200 OK in 610ms (Views: 549.7ms | ActiveRecord: 52.9ms)
+
+
+Started GET "/directors/new" for ::1 at 2017-01-27 20:02:30 -0200
+Processing by DirectorsController#new as HTML
+  Rendering directors/new.html.erb within layouts/application
+  Rendered directors/_form.html.erb (14.6ms)
+  Rendered directors/new.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 386ms (Views: 373.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/directors" for ::1 at 2017-01-27 20:02:31 -0200
+Processing by DirectorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2hwGXkbjnDC2IJdl0iG5hMgHyxxqVcNOFRVrfS+nPRWlqOibFUJrVS6XrqLI/6O+uO2f9pic0sZWclpjmI4q+g==", "director"=>{"name"=>"", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"22", "birthdate(5i)"=>"02", "gender"=>"", "country"=>"", "type"=>"Director"}, "commit"=>"Create Director"}
+  [1m[35m (4.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (11.9ms)[0m  [1m[32mINSERT INTO "professionals" ("name", "birthdate", "gender", "country", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", ""], ["birthdate", 2017-01-27 22:02:00 UTC], ["gender", ""], ["country", ""], ["type", "Director"], ["created_at", 2017-01-27 22:02:31 UTC], ["updated_at", 2017-01-27 22:02:31 UTC]]
+  [1m[35m (56.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/directors/6
+Completed 302 Found in 77ms (ActiveRecord: 73.0ms)
+
+
+Started GET "/directors/6" for ::1 at 2017-01-27 20:02:31 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mDirector Load (8.0ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 189ms (Views: 177.3ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 20:02:34 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (4.8ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 165ms (Views: 158.5ms | ActiveRecord: 4.8ms)
+
+
+Started DELETE "/directors/6" for ::1 at 2017-01-27 20:02:47 -0200
+Processing by DirectorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kDktUw/aK9Ce3wXfICDLS/T88Sv/etl1gWhbv7paVF9ZawfQtoIwMSr6AgboQV3yvqvg2Tr1G6KhmyLVaKCxfw==", "id"=>"6"}
+  [1m[36mDirector Load (11.4ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (141.8ms)[0m  [1m[31mDELETE FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ?[0m  [["id", 6]]
+  [1m[35m (69.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/directors
+Completed 302 Found in 226ms (ActiveRecord: 222.5ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 20:02:47 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (4.3ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 78ms (Views: 72.0ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/directors/5/edit" for ::1 at 2017-01-27 20:03:14 -0200
+Processing by DirectorsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDirector Load (5.6ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering directors/edit.html.erb within layouts/application
+  Rendered directors/_form.html.erb (18.7ms)
+  Rendered directors/edit.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 192ms (Views: 183.6ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/directors/5" for ::1 at 2017-01-27 20:03:18 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDirector Load (5.4ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 166ms (Views: 158.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 20:03:20 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (5.7ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 150ms (Views: 142.9ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/directors/3" for ::1 at 2017-01-27 20:03:25 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDirector Load (5.0ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 338ms (Views: 331.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/directors/4" for ::1 at 2017-01-27 20:03:31 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mDirector Load (11.9ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+Completed 404 Not Found in 14ms (ActiveRecord: 11.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Director with 'id'=4 [WHERE "professionals"."type" IN ('Director')]):
+  
+app/controllers/directors_controller.rb:67:in `set_director'
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.0ms)
+Started GET "/directors/2" for ::1 at 2017-01-27 20:03:35 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDirector Load (7.8ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 404 Not Found in 9ms (ActiveRecord: 7.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Director with 'id'=2 [WHERE "professionals"."type" IN ('Director')]):
+  
+app/controllers/directors_controller.rb:67:in `set_director'
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.9ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (12.6ms)
+Started GET "/directors/2" for ::1 at 2017-01-27 20:03:41 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDirector Load (17.7ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 404 Not Found in 19ms (ActiveRecord: 17.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Director with 'id'=2 [WHERE "professionals"."type" IN ('Director')]):
+  
+app/controllers/directors_controller.rb:67:in `set_director'
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.8ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (12.7ms)
+Started GET "/directors/" for ::1 at 2017-01-27 20:03:45 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (4.5ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 131ms (Views: 124.6ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/directors/3" for ::1 at 2017-01-27 20:03:58 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDirector Load (7.4ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 243ms (Views: 232.7ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 20:04:05 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (4.3ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 161ms (Views: 155.5ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/directors/3" for ::1 at 2017-01-27 20:04:07 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDirector Load (4.7ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 908ms (Views: 900.2ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 20:04:09 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (6.3ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 127ms (Views: 119.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/directors/3" for ::1 at 2017-01-27 20:04:14 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDirector Load (4.8ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 148ms (Views: 141.6ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/directors/3/edit" for ::1 at 2017-01-27 20:04:18 -0200
+Processing by DirectorsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDirector Load (4.4ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering directors/edit.html.erb within layouts/application
+  Rendered directors/_form.html.erb (5.1ms)
+  Rendered directors/edit.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 253ms (Views: 245.5ms | ActiveRecord: 4.4ms)
+
+
+Started PATCH "/directors/3" for ::1 at 2017-01-27 20:04:22 -0200
+Processing by DirectorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZYmLBxrjqISHhE+JTs1D1ZOwSk0N648JhErTg2JbQ9/zyTqflSbWqDLu7VmKyHKT48EIwQpvG1vvyL5bV8neSQ==", "director"=>{"name"=>"Quentin Tarantino", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"22", "birthdate(5i)"=>"04", "gender"=>"male", "country"=>"Teste", "type"=>"Director"}, "commit"=>"Update Director", "id"=>"3"}
+  [1m[36mDirector Load (4.1ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (30.6ms)[0m  [1m[33mUPDATE "professionals" SET "country" = ?, "birthdate" = ?, "updated_at" = ? WHERE "professionals"."id" = ?[0m  [["country", "Teste"], ["birthdate", 2017-01-27 22:04:00 UTC], ["updated_at", 2017-01-27 22:04:22 UTC], ["id", 3]]
+  [1m[35m (50.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/directors/3
+Completed 302 Found in 91ms (ActiveRecord: 85.2ms)
+
+
+Started GET "/directors/3" for ::1 at 2017-01-27 20:04:22 -0200
+Processing by DirectorsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDirector Load (4.4ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering directors/show.html.erb within layouts/application
+  Rendered directors/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 122ms (Views: 113.8ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/directors" for ::1 at 2017-01-27 20:04:24 -0200
+Processing by DirectorsController#index as HTML
+  Rendering directors/index.html.erb within layouts/application
+  [1m[36mDirector Load (4.4ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director')[0m
+  Rendered directors/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 253ms (Views: 246.9ms | ActiveRecord: 4.4ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (63.9ms)[0m  [1m[32mINSERT INTO "professionals" ("name", "gender", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Chris Evans"], ["gender", "male"], ["type", "Actor"], ["created_at", 2017-01-27 22:08:29 UTC], ["updated_at", 2017-01-27 22:08:29 UTC]]
+  [1m[35m (45.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (15.1ms)[0m  [1m[32mINSERT INTO "professionals" ("type", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["type", "Actor"], ["created_at", 2017-01-27 22:13:35 UTC], ["updated_at", 2017-01-27 22:13:35 UTC]]
+  [1m[35m (57.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (24.6ms)[0m  [1m[32mINSERT INTO "professionals" ("name", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Chris Evans"], ["type", "Actor"], ["created_at", 2017-01-27 22:17:01 UTC], ["updated_at", 2017-01-27 22:17:01 UTC]]
+  [1m[35m (41.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (11.5ms)[0m  [1m[32mINSERT INTO "professionals" ("country", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["country", "teste"], ["type", "Actor"], ["created_at", 2017-01-27 22:17:47 UTC], ["updated_at", 2017-01-27 22:17:47 UTC]]
+  [1m[35m (28.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (84.2ms)[0m  [1m[32mINSERT INTO "professionals" ("name", "gender", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Chris Evans"], ["gender", "male"], ["type", "Actor"], ["created_at", 2017-01-27 22:23:49 UTC], ["updated_at", 2017-01-27 22:23:49 UTC]]
+  [1m[35m (28.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (7.6ms)[0m  [1m[32mINSERT INTO "professionals" ("name", "gender", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Chris Evans"], ["gender", "male"], ["type", "Actor"], ["created_at", 2017-01-27 22:24:15 UTC], ["updated_at", 2017-01-27 22:24:15 UTC]]
+  [1m[35m (26.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/directors/new" for ::1 at 2017-01-27 20:27:54 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DirectorsController#new as HTML
+  Rendering directors/new.html.erb within layouts/application
+  Rendered directors/_form.html.erb (12.7ms)
+  Rendered directors/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 1291ms (Views: 1248.5ms | ActiveRecord: 22.7ms)
+
+
+Started POST "/directors" for ::1 at 2017-01-27 20:28:03 -0200
+Processing by DirectorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aX2gKbLzAkQGrGvf8IRRKZrMSJ6fT54st6/yBqA3/OkWyU7s4VL1IZ4bUhjqWksT6iYcdG2Gj6T0yMMYFx7rBg==", "director"=>{"name"=>"", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"22", "birthdate(5i)"=>"27", "gender"=>"", "country"=>"fsdfsd", "type"=>"Director"}, "commit"=>"Create Director"}
+  [1m[35m (5.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering directors/new.html.erb within layouts/application
+  Rendered directors/_form.html.erb (4.0ms)
+  Rendered directors/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 127ms (Views: 118.9ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/directors" for ::1 at 2017-01-27 20:28:21 -0200
+Processing by DirectorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N92yzgYC5SPQljvioHCjjFoForyoXqkK6+rUx/K+gaP+j5hNv1r+wmSzPDtoETU1EFKzTm3Ra93LGa2tIERkgw==", "director"=>{"name"=>"dfgdfgdfg", "birthdate(1i)"=>"2017", "birthdate(2i)"=>"1", "birthdate(3i)"=>"27", "birthdate(4i)"=>"22", "birthdate(5i)"=>"27", "gender"=>"dfgdfgdf", "country"=>"fsdfsd", "type"=>"Director"}, "commit"=>"Create Director"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering directors/new.html.erb within layouts/application
+  Rendered directors/_form.html.erb (4.5ms)
+  Rendered directors/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 109ms (Views: 107.3ms | ActiveRecord: 0.1ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (4.2ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? LIMIT ?[0m  [["title", "Django"], ["LIMIT", 1]]
+  [1m[35mSQL (20.6ms)[0m  [1m[32mINSERT INTO "movies" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Django"], ["created_at", 2017-01-27 22:32:48 UTC], ["updated_at", 2017-01-27 22:32:48 UTC]]
+  [1m[35m (62.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (5.0ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? LIMIT ?[0m  [["title", "Django"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (4.6ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? LIMIT ?[0m  [["title", "Django"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mMovie Exists (5.7ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? LIMIT ?[0m  [["title", "Django"], ["LIMIT", 1]]
+  [1m[36mMovie Exists (6.7ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? LIMIT ?[0m  [["title", "Django 2"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (3.8ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 1977-04-25 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35mSQL (7.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A"], ["release_date", 1977-04-25 00:00:00 UTC], ["created_at", 2017-01-27 22:41:45 UTC], ["updated_at", 2017-01-27 22:41:45 UTC]]
+  [1m[35m (45.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (5.4ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 1977-04-25 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (6.4ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 1977-04-25 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (5.5ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "B"], ["release_date", 1977-04-25 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "B"], ["release_date", 1977-04-25 00:00:00 UTC], ["created_at", 2017-01-27 22:42:14 UTC], ["updated_at", 2017-01-27 22:42:14 UTC]]
+  [1m[35m (22.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (4.8ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "B"], ["release_date", 1978-04-25 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35mSQL (9.9ms)[0m  [1m[32mINSERT INTO "movies" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "B"], ["release_date", 1978-04-25 00:00:00 UTC], ["created_at", 2017-01-27 22:42:21 UTC], ["updated_at", 2017-01-27 22:42:21 UTC]]
+  [1m[35m (37.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (5.5ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "B"], ["release_date", 1977-04-25 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mMovie Exists (6.1ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "B"], ["release_date", 1977-04-25 00:00:00 UTC], ["LIMIT", 1]]
+Started GET "/movies" for ::1 at 2017-01-27 20:46:39 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (3.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 492ms (Views: 453.6ms | ActiveRecord: 24.7ms)
+
+
+Started GET "/movies/new" for ::1 at 2017-01-27 20:46:56 -0200
+Processing by MoviesController#new as HTML
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (14.4ms)
+  Rendered movies/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 185ms (Views: 170.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/movies" for ::1 at 2017-01-27 20:47:03 -0200
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Glq27y4c/VaWbH0sVQfXGQgMY2U32ePr0aGHPONcnwpO0BYBeBoFO58ti15NYnlLncgf1FQpViPtf92IXeXXA==", "movie"=>{"title"=>"A", "release_date(3i)"=>"27", "release_date(2i)"=>"1", "release_date(1i)"=>"2017", "description"=>""}, "commit"=>"Create Movie"}
+  [1m[35m (5.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (17.2ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35mSQL (28.6ms)[0m  [1m[32mINSERT INTO "movies" ("title", "description", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "A"], ["description", ""], ["release_date", 2017-01-27 00:00:00 UTC], ["created_at", 2017-01-27 22:47:03 UTC], ["updated_at", 2017-01-27 22:47:03 UTC]]
+  [1m[35m (43.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/movies/18
+Completed 302 Found in 105ms (ActiveRecord: 94.3ms)
+
+
+Started GET "/movies/18" for ::1 at 2017-01-27 20:47:03 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mMovie Load (3.9ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  Rendered movies/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 115ms (Views: 107.8ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/movies/new" for ::1 at 2017-01-27 20:47:08 -0200
+Processing by MoviesController#new as HTML
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (2.5ms)
+  Rendered movies/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 97ms (Views: 96.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/movies" for ::1 at 2017-01-27 20:47:11 -0200
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JQ/1BUKAI/yDlvf4mis2I4Tn+HoJzG/X6yjmBrJt+I3sXd+G+9g4HTez8CFSSqCazrDpiMxDrQDL259sYJcdrQ==", "movie"=>{"title"=>"A", "release_date(3i)"=>"27", "release_date(2i)"=>"1", "release_date(1i)"=>"2017", "description"=>""}, "commit"=>"Create Movie"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (4.9ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (3.2ms)
+  Rendered movies/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 330ms (Views: 321.6ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/movies" for ::1 at 2017-01-27 20:47:15 -0200
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qTasaPzH2sAG7bWybafHeVGcFFKEc9Ife63rzAFi71BgZIbrRZ/BIbLIsmulxlHAG8sFoEH8EMhbXpKm05gKcA==", "movie"=>{"title"=>"A", "release_date(3i)"=>"27", "release_date(2i)"=>"1", "release_date(1i)"=>"2017", "description"=>""}, "commit"=>"Create Movie"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (7.0ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (2.6ms)
+  Rendered movies/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 258ms (Views: 248.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-27 21:01:59 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (4.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 591ms (Views: 552.2ms | ActiveRecord: 23.8ms)
+
+
+Started GET "/movies/new" for ::1 at 2017-01-27 21:02:05 -0200
+Processing by MoviesController#new as HTML
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (10.6ms)
+  Rendered movies/new.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 50ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/movies" for ::1 at 2017-01-27 21:02:07 -0200
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YTuQDkcYlAqLbFKcuRVaGx4+00D2MR5HiQU7QicKtQaoabqN/kCP6z9JVUVxdMyiVGnCsjO+3JCp9kIo9fBQJg==", "movie"=>{"title"=>"", "release_date(3i)"=>"27", "release_date(2i)"=>"1", "release_date(1i)"=>"2017", "description"=>""}, "commit"=>"Create Movie"}
+  [1m[35m (11.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (8.0ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", ""], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (5.4ms)
+  Rendered movies/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 250ms (Views: 219.4ms | ActiveRecord: 20.6ms)
+
+
+Started POST "/movies" for ::1 at 2017-01-27 21:05:45 -0200
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t+1MIJc08reGU2DRbLVxPWThRvnu2CBGRNj/cU4oBTR+v2ajLmzpVjJ2Zwik1OeELrZXCytX4pFkK4YbnNLgFA==", "movie"=>{"title"=>"A", "release_date(3i)"=>"27", "release_date(2i)"=>"1", "release_date(1i)"=>"2017", "description"=>""}, "commit"=>"Create Movie"}
+  [1m[35m (5.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (10.8ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (2.9ms)
+  Rendered movies/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 180ms (Views: 161.3ms | ActiveRecord: 16.4ms)
+
+
+Started POST "/movies" for ::1 at 2017-01-27 21:05:47 -0200
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OxjcrI3HHn52yDd9pcycHtlolv7XnKmSETHnibyJkw/ySvYvNJ8Fn8LtMKRtrQqnkz+HDBITa0Uxwp7jbnN2Lw==", "movie"=>{"title"=>"A", "release_date(3i)"=>"27", "release_date(2i)"=>"1", "release_date(1i)"=>"2017", "description"=>""}, "commit"=>"Create Movie"}
+  [1m[35m (4.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (3.3ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (4.0ms)
+  Rendered movies/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 121ms (Views: 110.6ms | ActiveRecord: 8.3ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (4.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDirectorToMovies (20170127231913)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (29.4ms)[0m  [1m[35mALTER TABLE "movies" ADD "director_id" integer[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170127231913"]]
+  [1m[35m (63.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (7.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mMovie Load (4.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDirector Load (4.7ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') ORDER BY "professionals"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (4.5ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND ("movies"."id" != ?) AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["id", 18], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (4.5ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND ("movies"."id" != ?) AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "A"], ["id", 18], ["release_date", 2017-01-27 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[35mSQL (20.5ms)[0m  [1m[33mUPDATE "movies" SET "updated_at" = ?, "director_id" = ? WHERE "movies"."id" = ?[0m  [["updated_at", 2017-01-27 23:27:54 UTC], ["director_id", 5], ["id", 18]]
+  [1m[35m (70.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMovie Load (4.9ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Exists (3.9ms)[0m  [1m[34mSELECT  1 AS one FROM "movies" WHERE "movies"."title" = ? AND ("movies"."id" != ?) AND "movies"."release_date" = ? LIMIT ?[0m  [["title", "Star Wars"], ["id", 1], ["release_date", 1977-04-25 00:00:00 UTC], ["LIMIT", 1]]
+  [1m[36mDirector Load (0.1ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[33mUPDATE "movies" SET "director_id" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director_id", 5], ["updated_at", 2017-01-27 23:28:23 UTC], ["id", 1]]
+  [1m[35m (49.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMovie Load (4.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."director_id" = ?[0m  [["director_id", 5]]
