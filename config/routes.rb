@@ -17,5 +17,7 @@ Rails.application.routes.draw do
 
   put 'movies/:id/' => "movies#update"
 
+  root 'movies#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
