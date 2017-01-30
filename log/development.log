@@ -4252,3 +4252,668 @@ Processing by ActorsController#index as HTML
 Completed 200 OK in 78ms (Views: 70.2ms | ActiveRecord: 4.9ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (4.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateClassifications (20170130225517)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "classifications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "movie_id" integer, "user_id" integer, "score" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_classifications_on_movie_id" ON "classifications" ("movie_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_classifications_on_movie_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_classifications_on_movie_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_classifications_on_user_id" ON "classifications" ("user_id")[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170130225517"]]
+  [1m[35m (73.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (4.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (4.7ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_classifications_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_classifications_on_user_id' AND type='index'
+[0m
+  [1m[35m (4.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_classifications_on_movie_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_classifications_on_movie_id' AND type='index'
+[0m
+  [1m[35m (3.9ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (4.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mMovie Load (10.7ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Load (4.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (72.5ms)[0m  [1m[32mINSERT INTO "classifications" ("movie_id", "user_id", "score", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["movie_id", 4], ["user_id", 3], ["score", 8], ["created_at", 2017-01-30 22:59:43 UTC], ["updated_at", 2017-01-30 22:59:43 UTC]]
+  [1m[35m (109.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mClassification Load (4.8ms)[0m  [1m[34mSELECT "classifications".* FROM "classifications" WHERE "classifications"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (5.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "classifications" ON "movies"."id" = "classifications"."movie_id" WHERE "classifications"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mMovie Load (5.4ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mClassification Load (6.1ms)[0m  [1m[34mSELECT "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 4]]
+  [1m[36mUser Load (8.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "classifications" ON "users"."id" = "classifications"."user_id" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 1], ["movie_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 1], ["movie_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 1], ["movie_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 2], ["movie_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 3], ["movie_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 3], ["movie_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 3], ["movie_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mClassification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 3], ["movie_id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (8.1ms)[0m  [1m[32mINSERT INTO "classifications" ("movie_id", "user_id", "score", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["movie_id", 2], ["user_id", 3], ["score", 10], ["created_at", 2017-01-30 23:15:15 UTC], ["updated_at", 2017-01-30 23:15:15 UTC]]
+  [1m[35m (42.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/movies" for ::1 at 2017-01-30 21:18:50 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (5.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (51.5ms)
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 405ms (Views: 341.1ms | ActiveRecord: 49.6ms)
+
+
+Started GET "/movies/2" for ::1 at 2017-01-30 21:18:52 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMovie Load (4.9ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (60.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (5.3ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 2], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (138.0ms)
+Completed 200 OK in 309ms (Views: 205.2ms | ActiveRecord: 88.2ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:18:56 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (7.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (9.2ms)
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 127ms (Views: 113.1ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/movies/3" for ::1 at 2017-01-30 21:18:57 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (5.8ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (41.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (19.3ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (100.6ms)
+Completed 200 OK in 214ms (Views: 132.2ms | ActiveRecord: 66.3ms)
+
+
+Started POST "/movies/3/classifications" for ::1 at 2017-01-30 21:19:02 -0200
+  
+AbstractController::ActionNotFound (The action 'create_classification' could not be found for MoviesController):
+  
+actionpack (5.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.3ms)
+Started GET "/movies" for ::1 at 2017-01-30 21:19:07 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (32.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (35.8ms)
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 156ms (Views: 117.7ms | ActiveRecord: 37.0ms)
+
+
+Started GET "/movies/4" for ::1 at 2017-01-30 21:19:08 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMovie Load (3.9ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (39.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (4.5ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (119.8ms)
+Completed 200 OK in 445ms (Views: 386.2ms | ActiveRecord: 47.7ms)
+
+
+Started GET "/actors" for ::1 at 2017-01-30 21:22:17 -0200
+Processing by ActorsController#index as HTML
+  Rendering actors/index.html.erb within layouts/application
+  [1m[36mActor Load (5.6ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor')[0m
+  Rendered actors/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 128ms (Views: 97.0ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/actors" for ::1 at 2017-01-30 21:22:20 -0200
+Processing by ActorsController#index as HTML
+  Rendering actors/index.html.erb within layouts/application
+  [1m[36mActor Load (10.1ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor')[0m
+  Rendered actors/index.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 60ms (Views: 48.5ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:22:22 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (9.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (50.1ms)
+Completed 200 OK in 139ms (Views: 99.3ms | ActiveRecord: 31.9ms)
+
+
+Started GET "/movies/1" for ::1 at 2017-01-30 21:22:23 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (45.9ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  Rendered movies/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 461ms (Views: 400.6ms | ActiveRecord: 45.9ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-01-30 21:22:29 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 139ms (Views: 109.2ms | ActiveRecord: 21.8ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-01-30 21:22:37 -0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c7Gs00ICs5LUYwIig0MucmUu50Ie1SlZbCIM5bShAg43hB8yPZRobQc9PRY3NRA3ESeafz105pT/Rf4j6NmUzA==", "user"=>{"email"=>"robintimao2@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (33.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "robintimao2@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (20.5ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_created_at", 2017-01-30 23:22:37 UTC], ["updated_at", 2017-01-30 23:22:37 UTC], ["id", 3]]
+  [1m[35m (83.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (25.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 2], ["current_sign_in_at", 2017-01-30 23:22:37 UTC], ["updated_at", 2017-01-30 23:22:37 UTC], ["id", 3]]
+  [1m[35m (60.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/directors/1/edit
+Completed 302 Found in 368ms (ActiveRecord: 223.2ms)
+
+
+Started GET "/directors/1/edit" for ::1 at 2017-01-30 21:22:37 -0200
+Processing by DirectorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDirector Load (6.1ms)[0m  [1m[34mSELECT  "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Director') AND "professionals"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering directors/edit.html.erb within layouts/application
+  Rendered directors/_form.html.erb (6.1ms)
+  Rendered directors/edit.html.erb within layouts/application (26.1ms)
+Completed 200 OK in 271ms (Views: 178.8ms | ActiveRecord: 47.6ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:22:39 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (5.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (20.9ms)
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 159ms (Views: 148.0ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/movies/1" for ::1 at 2017-01-30 21:22:40 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (7.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (4.7ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (69.4ms)
+Completed 200 OK in 254ms (Views: 203.5ms | ActiveRecord: 36.4ms)
+
+
+Started POST "/movies/1/classifications" for ::1 at 2017-01-30 21:22:45 -0200
+Processing by MoviesController#create_classification as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mNz/2b5Yk1y9j4d0oBosfY8pXoD9OUTkGqMkrNSXtJFIjMVj5T+lUrr31Pyv9trkMhlFtOE8sXe2Z2Ny4My6Qw==", "classification"=>{"score"=>"23"}, "commit"=>"Set score", "id"=>"1"}
+  [1m[36mMovie Load (5.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClassification Exists (4.1ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 3], ["movie_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/movies/1
+Completed 302 Found in 186ms (ActiveRecord: 14.7ms)
+
+
+Started GET "/movies/1" for ::1 at 2017-01-30 21:22:46 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (5.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (5.1ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 229ms (Views: 207.3ms | ActiveRecord: 14.2ms)
+
+
+Started POST "/movies/1/classifications" for ::1 at 2017-01-30 21:22:50 -0200
+Processing by MoviesController#create_classification as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GaCGIMnfj4FqIBI0AoA+Eo7L49o4j7L8QbBo0wVzo47ydtughLZVfF9cym5OY3c3l9VI7iQOzgMtQo3O8+vO0A==", "classification"=>{"score"=>"5"}, "commit"=>"Set score", "id"=>"1"}
+  [1m[36mMovie Load (8.6ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClassification Exists (5.9ms)[0m  [1m[34mSELECT  1 AS one FROM "classifications" WHERE "classifications"."user_id" = ? AND "classifications"."movie_id" = ? LIMIT ?[0m  [["user_id", 3], ["movie_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (28.9ms)[0m  [1m[32mINSERT INTO "classifications" ("movie_id", "user_id", "score", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["movie_id", 1], ["user_id", 3], ["score", 5], ["created_at", 2017-01-30 23:22:50 UTC], ["updated_at", 2017-01-30 23:22:50 UTC]]
+  [1m[35m (71.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/movies/1
+Completed 302 Found in 213ms (ActiveRecord: 119.5ms)
+
+
+Started GET "/movies/1" for ::1 at 2017-01-30 21:22:50 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (4.8ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (5.2ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (57.5ms)
+Completed 200 OK in 436ms (Views: 413.9ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:22:56 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (6.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (20.9ms)
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 106ms (Views: 93.4ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/movies/2" for ::1 at 2017-01-30 21:22:58 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMovie Load (5.9ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (4.9ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 2], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 141ms (Views: 106.7ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:23:00 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (5.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (29.2ms)
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 338ms (Views: 325.4ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/movies/3" for ::1 at 2017-01-30 21:23:01 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (4.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (4.0ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (41.7ms)
+Completed 200 OK in 210ms (Views: 171.4ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:23:02 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (4.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (29.4ms)
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 159ms (Views: 148.8ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/movies/4" for ::1 at 2017-01-30 21:23:03 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMovie Load (4.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (5.5ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (39.1ms)
+Completed 200 OK in 233ms (Views: 175.3ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:23:04 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (5.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (24.6ms)
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 272ms (Views: 260.5ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/movies/1" for ::1 at 2017-01-30 21:23:05 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (5.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (6.8ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (83.0ms)
+Completed 200 OK in 261ms (Views: 218.7ms | ActiveRecord: 16.6ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2017-01-30 21:23:10 -0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FKmoFTYVXpxHPT+XvPVEVSlVGx9CVZXVlZfa1nIoBw3/f/WVe3yEYXJB583wFg1wMEuwK17U6Sr5ZT/LhLBqUw=="}
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (7.6ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_created_at", nil], ["updated_at", 2017-01-30 23:23:10 UTC], ["id", 3]]
+  [1m[35m (45.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 108ms (ActiveRecord: 58.5ms)
+
+
+Started GET "/" for ::1 at 2017-01-30 21:23:10 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (6.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 296ms (Views: 288.7ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/movies/1" for ::1 at 2017-01-30 21:23:12 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (5.9ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  Rendered movies/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 136ms (Views: 109.7ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:23:14 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (5.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (24.4ms)
+Completed 200 OK in 275ms (Views: 267.8ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/movies/4" for ::1 at 2017-01-30 21:23:15 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMovie Load (6.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  Rendered movies/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 374ms (Views: 361.3ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/actors" for ::1 at 2017-01-30 21:23:17 -0200
+Processing by ActorsController#index as HTML
+  Rendering actors/index.html.erb within layouts/application
+  [1m[36mActor Load (5.3ms)[0m  [1m[34mSELECT "professionals".* FROM "professionals" WHERE "professionals"."type" IN ('Actor')[0m
+  Rendered actors/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 189ms (Views: 181.5ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/actors/new" for ::1 at 2017-01-30 21:23:18 -0200
+Processing by ActorsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-01-30 21:23:18 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 207ms (Views: 205.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:23:21 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (6.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 229ms (Views: 221.3ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-01-30 21:23:23 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 312ms (Views: 311.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-01-30 21:23:26 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (92.6ms)
+Completed 200 OK in 209ms (Views: 208.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-01-30 21:23:28 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 105ms (Views: 103.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-01-30 21:23:39 -0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UKcp7i04rZGJahOFvBSPA/6C1lLMr8qflJwr0LlxkCOzoYe5Zq3ee2N9ziohR+vvG1hUoSCPjT+/weVgywV6vA==", "user"=>{"email"=>"robintimao2@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "robintimao2@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (11.8ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2017-01-30 23:23:39 UTC], ["last_sign_in_at", 2017-01-30 23:22:37 UTC], ["sign_in_count", 3], ["updated_at", 2017-01-30 23:23:39 UTC], ["id", 3]]
+  [1m[35m (75.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/actors/new
+Completed 302 Found in 220ms (ActiveRecord: 92.4ms)
+
+
+Started GET "/actors/new" for ::1 at 2017-01-30 21:23:39 -0200
+Processing by ActorsController#new as HTML
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering actors/new.html.erb within layouts/application
+  Rendered actors/_form.html.erb (3.8ms)
+  Rendered actors/new.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 225ms (Views: 164.2ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:23:41 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (5.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (29.6ms)
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 202ms (Views: 189.1ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/movies/3" for ::1 at 2017-01-30 21:23:44 -0200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (76.7ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mClassification Load (78.5ms)[0m  [1m[34mSELECT  "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ? AND "classifications"."user_id" = ? ORDER BY "classifications"."id" ASC LIMIT ?[0m  [["movie_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  Rendered movies/show.html.erb within layouts/application (129.3ms)
+Completed 200 OK in 626ms (Views: 463.9ms | ActiveRecord: 159.9ms)
+
+
+  [1m[36mMovie Load (5.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mMovie Load (6.6ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mClassification Load (5.4ms)[0m  [1m[34mSELECT "classifications".* FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 1]]
+Started GET "/movies" for ::1 at 2017-01-30 21:30:08 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (28.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[35m (5.6ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 2]]
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 3]]
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 4]]
+  Rendered movies/index.html.erb within layouts/application (452.7ms)
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 2145ms (Views: 2026.4ms | ActiveRecord: 103.3ms)
+
+
+Started GET "/movies" for ::1 at 2017-01-30 21:32:01 -0200
+Processing by MoviesController#index as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/ruby.16/aula01/my_movies/app/models/movie.rb:20: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/movie.rb:20: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/movies_controller.rb:6:in `index'
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.9ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (114.4ms)
+Started GET "/movies" for ::1 at 2017-01-30 21:32:11 -0200
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (9.8ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 2]]
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 3]]
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT AVG("classifications"."score") FROM "classifications" WHERE "classifications"."movie_id" = ?[0m  [["movie_id", 4]]
+  Rendered movies/index.html.erb within layouts/application (139.8ms)
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 319ms (Views: 231.9ms | ActiveRecord: 77.3ms)
+
+
+Started GET "/user/sign_up" for ::1 at 2017-01-30 21:37:46 -0200
+  
+ActionController::RoutingError (No route matches [GET] "/user/sign_up"):
+  
+actionpack (5.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.1ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [42 times] (8.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.4ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (263.9ms)
